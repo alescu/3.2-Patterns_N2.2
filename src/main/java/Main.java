@@ -10,27 +10,20 @@ public class Main {
         FinanTialInstitution fini_3 = new FinanTialInstitution("Stark.corp", "stark.inc@starkenterprises.com");
         FinanTialInstitution fini_4 = new FinanTialInstitution("Hammer.inc", "hammer.inc@hammer.com");
 
-        Newsletter.addBroker(sb_1);
-        Newsletter.addBroker(sb_2);
-        Newsletter.addBroker(sb_3);
+        sb_1.getObservers().add(fini_1);
+        sb_1.getObservers().add(fini_2);
+        sb_1.getObservers().add(fini_3);
+        sb_1.getObservers().add(fini_4);
 
-        Newsletter.addFinanTialInstitution(sb_1, fini_1);
-        Newsletter.addFinanTialInstitution(sb_1, fini_2);
-        Newsletter.addFinanTialInstitution(sb_1, fini_3);
-        Newsletter.addFinanTialInstitution(sb_1, fini_4);
+        sb_2.getObservers().add(fini_1);
 
-        Newsletter.addFinanTialInstitution(sb_1, fini_2);
-        Newsletter.addFinanTialInstitution(sb_1, fini_3);
-        Newsletter.addFinanTialInstitution(sb_2, fini_4);
+        sb_3.getObservers().add(fini_1);
+        sb_3.getObservers().add(fini_4);
 
-        Newsletter.addFinanTialInstitution(sb_3, fini_2);
-        Newsletter.addFinanTialInstitution(sb_3, fini_3);
-
-        Newsletter.publishCommunicate(sb_1, "Comunication 1");
-        Newsletter.publishCommunicate(sb_2, "Comunication 2");
-        Newsletter.publishCommunicate(sb_3, "Comunication 3");
-
-        Newsletter.publishCommunicate(sb_1, "Comunication 4");
+        System.out.println("\n");
+        sb_1.publishNewCommunicate(sb_1, "Microsoft (MSFT): +1,2% ^;AMD (AMD): +2,5% ^;Nvidia (NVDA): +3,0% ^;Apple (AAPL): -0,5% !");
+        sb_2.publishNewCommunicate(sb_2, "Microsoft (MSFT): +1,2% ^;AMD (AMD): +2,5% =;Nvidia (NVDA): +3,0% ^;Apple (AAPL): -0,5% =");
+        sb_3.publishNewCommunicate(sb_3, "Microsoft (MSFT): +1,2% ^;AMD (AMD): +2,5% ^;Nvidia (NVDA): +3,0% ^^;Apple (AAPL): -0,5% !!");
 
     }
 }

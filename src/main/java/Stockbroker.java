@@ -1,11 +1,11 @@
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
-import java.util.Map;
-import java.util.LinkedHashMap;
+import java.util.*;
 
 public class Stockbroker {
     private String name, assessment;
     private Double reliability, price;
     private Map<String, String> news = new LinkedHashMap<String, String>();
+    private List<FinanTialInstitution> observers = new ArrayList<>();
 
     public Stockbroker(String name, String assessment, Double reliability, Double price){
         this.name=name;
@@ -46,4 +46,15 @@ public class Stockbroker {
         this.price = price;
     }
 
+    public List<FinanTialInstitution> getObservers() {
+        return observers;
+    }
+
+    public static void publishNewCommunicate(Stockbroker stb, String news) {
+        System.out.println("Send new " + stb.getName() + " communication : " + news);
+        for(FinanTialInstitution fini: stb.getObservers()){
+            fini.Update(stb, news);
+        }
+        System.out.println("\n");
+    }
 }
