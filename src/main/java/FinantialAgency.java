@@ -1,7 +1,7 @@
-public class FinanTialInstitution implements Subscriber{
+public class FinantialAgency implements Subscriber{
     private String name, email;
 
-    public FinanTialInstitution(String name, String email) {
+    public FinantialAgency(String name, String email) {
         this.name = name;
         this.email = email;
     }
@@ -23,7 +23,7 @@ public class FinanTialInstitution implements Subscriber{
     }
 
     @Override
-    public void Update(Stockbroker stb, String news) {
-        System.out.println(" Received by " + this.getName() +" - "+ this.getEmail());
+    public void Update(String news) {
+        System.out.println("    Received by " + this.getName() +" - "+ this.getEmail());
     }
 }

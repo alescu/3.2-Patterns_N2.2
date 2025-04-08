@@ -1,3 +1,3 @@
 public interface Subscriber {
-    void Update(Stockbroker stb, String news);
+    void Update(String news);
 }

@@ -1,59 +1,25 @@
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.*;
 
 public class Stockbroker {
-    private String name, assessment;
-    private Double reliability, price;
-    private Map<String, String> news = new LinkedHashMap<String, String>();
-    private List<FinanTialInstitution> observers = new ArrayList<>();
 
-    public Stockbroker(String name, String assessment, Double reliability, Double price){
-        this.name=name;
-        this.assessment = assessment;
-        this.reliability = reliability;
-        this.price = price;
-    }
+    private List<Subscriber> observers = new ArrayList<Subscriber>();
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAssessment() {
-        return assessment;
-    }
-
-    public void setAssessment(String assessment) {
-        this.assessment = assessment;
-    }
-
-    public Double getReliability() {
-        return reliability;
-    }
-
-    public void setReliability(Double reliability) {
-        this.reliability = reliability;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public List<FinanTialInstitution> getObservers() {
+    public List<Subscriber> getObservers() {
         return observers;
     }
 
-    public static void publishNewCommunicate(Stockbroker stb, String news) {
-        System.out.println("Send new " + stb.getName() + " communication : " + news);
-        for(FinanTialInstitution fini: stb.getObservers()){
-            fini.Update(stb, news);
+    public void addObserver(Subscriber obs) {
+        this.observers.add(obs);
+    }
+
+    public void removeObserver(Subscriber obs) {
+        this.observers.remove(obs);
+    }
+
+    public void publishNewCommunicate(String news) {
+        System.out.println("Message: " + news);
+        for(Subscriber obs: this.observers){
+            obs.Update(news);
         }
         System.out.println("\n");
     }
